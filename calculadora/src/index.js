@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Normalize from 'react-normalize';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import Calculadora from './Calculadora';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Normalize />
+    <Calculadora />
   </React.StrictMode>,
   document.getElementById('root')
 );

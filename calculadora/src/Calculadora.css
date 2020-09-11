@@ -1,0 +1,19 @@
+.ant-card.ant-card-bordered{
+  margin-top: 25px;
+}
+
+.ant-row .gutter-row div{
+  margin-top: 6px;
+  padding: 3px;
+  background: #00a0e9;
+  text-align: center;
+}
+
+.ant-row:first-child .gutter-row:first-child div{
+  background: red;
+  color: #FFF;
+}
+
+.ant-row:not(:first-child) .gutter-row:last-child div{
+  background: chocolate;
+}
