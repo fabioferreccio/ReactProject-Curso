@@ -8,10 +8,10 @@ import Calculadora from './Calculadora';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <Normalize />
     <Calculadora />
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );
 
