@@ -1,0 +1,55 @@
+.ant-card.ant-card-bordered{
+  margin-top: 25px;
+  background-color: transparent;
+}
+
+.ant-card-body{
+  background-color: #FFF;
+  border: 1px solid #CCC;
+  border-radius: 8px;
+}
+
+.ant-row .gutter-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-row .gutter-row input.ant-input{
+  text-align: right;
+  margin-top: 5px;
+  width: 97%;
+}
+
+button.ant-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button.ant-btn.sucess{
+  background-color: rgb(20, 192, 126);
+}
+
+button.ant-btn.sucess:hover{
+  color: #FFF;
+}
+button.ant-btn.sucess:focus{
+  color:initial;
+}
+
+.ant-row .gutter-row button.ant-btn{
+  width: 90%;
+  margin-top: 5px;
+}
+
+.ant-row:not(:first-child) .gutter-row:last-child button.ant-btn{
+  background: rgb(238, 208, 76);
+}
+
+.ant-row:not(:first-child) .gutter-row:last-child button.ant-btn:hover{
+  color: #FFF;
+}
+.ant-row:not(:first-child) .gutter-row:last-child button.ant-btn:focus{
+  color: initial;
+}

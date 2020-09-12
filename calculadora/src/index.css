@@ -1,0 +1,30 @@
+@import '~antd/dist/antd.min.css';
+
+.ant-layout-header{
+    color: #FFFFFFcc;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+  }
+  
+  .ant-layout-content{
+    min-height: 552px;
+    margin: 0 auto;
+  }
+  
+  .ant-layout-footer{
+    background-color: #F00F0000;
+    text-align: center;
+    height: 28px;
+    line-height: 28px;
+  }
+
+  /* .ant-layout-footer small{
+    margin: 20px 0px 0px 0px;
+  } */
+  
+  @media(min-width: 700px){
+    .ant-layout-content{
+      min-height: 664px;
+    }
+  }
