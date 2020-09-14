@@ -112,7 +112,7 @@ function ConversorMoedas() {
             </Col>
             <Col xs={24} sm={3}>
               <Form.Item>
-                <Button type="default" htmlType="submit">
+                <Button type="default" htmlType="submit" data-testid="btn-converter">
                   <span className={exibirSpinner ? null : 'hidden'}><Spin size="small" /></span>
                   <span className={!exibirSpinner ? null : 'hidden'}>Converter</span>
                 </Button>
@@ -120,7 +120,8 @@ function ConversorMoedas() {
             </Col>
           </Row>
         </Form>
-        <Modal title="Conversão" closable 
+        <Modal title="Conversão" closable
+          data-testid="modal"
           visible={exibirModal}
           onCancel={handleFecharModal}
           footer={[
