@@ -15,7 +15,7 @@ const { Header, Footer, Content } = Layout;
 
 function ConversorMoedas() {
   // SERVICE URLs:
-  const FIXER_URL = 'http://data.fixer.io/api/latest?access_key=eba7130a5b2d720ce43eb5fcddd47cc3';
+  const FIXER_URL = 'http://data.fixer.io/api/latest?access_key=?';
 
   // Define Variaveis:
   const [valorInput, setValorInput] = useState(null);
