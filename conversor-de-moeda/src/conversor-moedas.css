@@ -1,0 +1,23 @@
+.ant-card.ant-card-bordered{
+    margin-top: 25px;
+    background-color: transparent;
+  }
+
+  .ant-card-body{
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 8px;
+  }
+
+  .ant-card.ant-card-bordered.cm-card--content{
+      width: 98vw;
+  }
+
+  .ant-BasicSelect{
+    width: 100%;
+  }
+
+  .hidden{
+      display: none !important;
+  }
+  
