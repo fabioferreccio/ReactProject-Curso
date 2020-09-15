@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Normalize from 'react-normalize';
 import './index.css';
-import App from './App';
+import GerenciadorTarefas from './gerenciador-tarefas';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <>
+    <Normalize />
+    <GerenciadorTarefas />
+  </>,
   document.getElementById('root')
 );
 

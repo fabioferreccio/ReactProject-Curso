@@ -2,12 +2,12 @@
 Repositório responsável por armazenar pequenos projetos do curso de React
 
 ### Bibliotecas Instaladas:
-1. ResetCSS: npm i react-normalize
-2. Front-End: npm install antd
+1. ResetCSS: npm i react-normalize  --save
+2. Front-End: npm install antd  --save
 3. Icons: npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 4. Requests: npm install --save axios
 5. Rotas: npm install --save hookrouter
-6. Validações: npm install prop-types
+6. Validações: npm install prop-types  --save
 7. Testes: npm install --save-dev @testing-library/react @testing-library/jest-dom
 
 ### Projetos:
