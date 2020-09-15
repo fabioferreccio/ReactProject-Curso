@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AntdLayout from '../BaseLayout/AntdLayout';
-import { PageHeader, Table, Button, Descriptions, Space } from 'antd';
+import { PageHeader, Table, Button, Descriptions, Space, Input } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ConcluirTarefa from './concluir-tarefa';
 import RemoverTarefa from './remover-tarefa';
 import './listar-tarefas.css';
@@ -10,11 +10,24 @@ import './listar-tarefas.css';
 function ListarTarefa() {
   const [carregarTarefas, setCarregarTarefas] = useState(true);
   const [dataSource, setDataSource] = useState([]);
+  const [filtroTarefa, setFiltroTarefa] = useState("");
+
+  function handleFiltrar(event){
+    event.preventDefault();
+    setFiltroTarefa(event.target.value);
+    setCarregarTarefas(true);
+  }
 
   useEffect(() => {
     function obterTarefas(){
       const tarefaDB = localStorage['tarefa'];
       let listarTarefas = tarefaDB ? JSON.parse(tarefaDB) : [];
+      
+      // Implementação do filtro
+      listarTarefas = listarTarefas.filter(
+        t => t.nome.toLowerCase().indexOf(filtroTarefa.toLowerCase()) === 0
+      );
+
       setDataSource(listarTarefas);
       //console.log(listarTarefas);
     }
@@ -23,14 +36,16 @@ function ListarTarefa() {
       obterTarefas();
       setCarregarTarefas(false);
     }
-  }, [carregarTarefas]);
+  }, [carregarTarefas, filtroTarefa]);
   
   const columns = [
     {
       title: 'Tarefa',
       dataIndex: 'nome',
       width: '75%',
-      sorter: (a, b) => a.nome.toLowerCase() <= b.nome.toLowerCase(),
+      onFilter: (value, record) => record.nome.indexOf(value) === 0,
+      sorter: (a, b) => a.nome.toLowerCase() < b.nome.toLowerCase() ? 1 : -1,
+      sortDirections: ['descend', 'ascend'],
       render: (text, record) => (
         <span style={{textDecoration: record.concluida ? 'line-through' : 'none' }}>
           {text} 
@@ -65,7 +80,18 @@ function ListarTarefa() {
           ghost={false}
           title="Tarefas a fazer"
           extra={[
-            <Button key="1" type="primary" href="/cadastrar">
+            <Input
+              key = "1"
+              style={{width: "unset"}}
+              prefix={
+                <FontAwesomeIcon 
+                  icon={faSearch} 
+                  style={{ color: "#7f767666" }} />
+              }
+              value={filtroTarefa}
+              onChange={handleFiltrar}
+              placeholder="Buscar Tarefa" />,
+            <Button key="2" type="primary" href="/cadastrar">
               Nova Tarefa
             </Button>,
           ]}

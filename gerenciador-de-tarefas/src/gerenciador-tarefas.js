@@ -12,7 +12,8 @@ const routes = {
 };
 
 function GerenciadorTarefas() {
-  return useRoutes(routes);
+  const routeResult = useRoutes(routes);
+  return routeResult || <div>Error</div>;
 }
 
 export default GerenciadorTarefas;
