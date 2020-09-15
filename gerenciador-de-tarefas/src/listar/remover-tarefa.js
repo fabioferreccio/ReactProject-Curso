@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-function ConcluirTarefa(props){
+function RemoverTarefa(props){
     const [exibirModal, setExibeModal] = useState(false);
 
     function handleAbrirModal(event){
@@ -17,41 +17,37 @@ function ConcluirTarefa(props){
         setExibeModal(false);
     }
 
-    function handleConcluirTarefa(event){
+    function handleRemoverTarefa(event){
         event.preventDefault();
         const tarefasDB = localStorage['tarefa'];
         let tarefas = tarefasDB ? JSON.parse(tarefasDB) : [];
         
-        tarefas = tarefas.map(tarefa => {
-            if(tarefa.id === props.tarefa.id){
-                tarefa.concluida = true;
-            }
-            return tarefa;
-        });
+        tarefas = tarefas.filter(tarefa => tarefa.id !== props.tarefa.id);
+        
         localStorage['tarefa'] = JSON.stringify(tarefas);
         setExibeModal(false);
         props.recarregarTarefas(true);
     }
 
     return(
-        <span className={props.className}>
-            <Button 
+        <span>
+            <Button type="primary" danger
                 data-testid="btn-abrir-modal"
-                icon={<FontAwesomeIcon icon={faClipboardCheck} style={{ color: "#00000066" }} />} 
+                icon={<FontAwesomeIcon icon={faTrashAlt} style={{ color: "#ffffffdd" }} />} 
                 size="small"
                 onClick={handleAbrirModal} />
             <Modal 
                 data-testid="modal"
                 closable
-                title="Concluir Tarefa" 
+                title="Remover Tarefa" 
                 visible={exibirModal}
                 onCancel={handleFecharModal}
                 footer={[
                     <Button 
                         key="1" 
                         type="primary"
-                        data-testid="btn-concluir"
-                        onClick={handleConcluirTarefa}>
+                        data-testid="btn-remover"
+                        onClick={handleRemoverTarefa}>
                         Sim
                     </Button>,
                     <Button 
@@ -63,7 +59,7 @@ function ConcluirTarefa(props){
                     </Button>,
                 ]}>
                 <p>
-                    Deseja realmente concluir a seguinte tarefa?<br />
+                    Deseja realmente remover a seguinte tarefa?<br />
                     <strong>{props.tarefa.nome}</strong>
                 </p>
             </Modal>
@@ -71,10 +67,9 @@ function ConcluirTarefa(props){
     );
 }
 
-ConcluirTarefa.protoTypes = {
+RemoverTarefa.protoTypes = {
     tarefa: PropTypes.object.isRequired,
-    recarregarTarefas: PropTypes.func.isRequired,
-    className: PropTypes.string
+    recarregarTarefas: PropTypes.func.isRequired
 }
 
-export default ConcluirTarefa;
+export default RemoverTarefa;

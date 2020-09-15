@@ -4,6 +4,7 @@ import { PageHeader, Table, Button, Descriptions, Space } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ConcluirTarefa from './concluir-tarefa';
+import RemoverTarefa from './remover-tarefa';
 import './listar-tarefas.css';
 
 function ListarTarefa() {
@@ -15,7 +16,7 @@ function ListarTarefa() {
       const tarefaDB = localStorage['tarefa'];
       let listarTarefas = tarefaDB ? JSON.parse(tarefaDB) : [];
       setDataSource(listarTarefas);
-      console.log(listarTarefas);
+      //console.log(listarTarefas);
     }
 
     if(carregarTarefas){
@@ -50,7 +51,9 @@ function ListarTarefa() {
             icon={<FontAwesomeIcon icon={faEdit} style={{ color: "#00000066" }} />} 
             size="small"
             href={'/atualizar/' + record.id} />
-          
+          <RemoverTarefa 
+            tarefa={record} 
+            recarregarTarefas={setCarregarTarefas} />
         </Space>
       ),
     }
